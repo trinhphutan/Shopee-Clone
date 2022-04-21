@@ -1702,6 +1702,7 @@
 /* footer-end */
 .footer-end {
     background-color: #F5F5F5;
+    position: relative;
 }
 
 .footer-end__wrapper {
@@ -1780,4 +1781,39 @@
     font-size: 1.2rem;
     color: #000000A6;
     margin: 8px 0 0;
+}
+
+.chat-wrapper {
+    cursor: pointer;
+    position: fixed;
+    right: 8px;
+    top: calc(100% - 28px);
+    margin-top: -20px;
+    width: 100px;
+    height: 48px;
+    background-color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 1px 3.125px 0 rgba(0, 0, 0, 0.2);
+}
+
+.chat {
+    display: flex;
+    padding: 7px;
+    margin-top: 2px;
+}
+
+.chat-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 8px;
+}
+
+.chat-text {
+    font-size: 2rem;
+    color: #ee4d2d;
+    font-weight: 500;
+    display: block;
+    margin-top: 13px;
+    margin-left: 4px;
 }
