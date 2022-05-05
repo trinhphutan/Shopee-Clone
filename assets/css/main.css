@@ -1107,6 +1107,7 @@
     align-items: center;
     position: relative;
     padding-top: 5px;
+    width: 200px;
 }
 
 .back-home-page__wrap {
