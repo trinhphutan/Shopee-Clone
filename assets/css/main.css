@@ -1,3 +1,8 @@
+.app {
+    /* ẩn những phần tử thừa ra  */
+    overflow: hidden;
+}
+
 .header {
     height: var(--header-height);
     background-image: linear-gradient(0, #fd5f32, #f6412d);
@@ -638,6 +643,19 @@
     padding: 0 14px;
 }
 
+.header__mobile-search {
+    padding: 0 10px;
+}
+
+.header__mobile-search-icon {
+    font-size: 2.6rem;
+    color: var(--white-color);
+}
+
+.header__search-checkbox:checked~.header__search {
+    display: flex;
+}
+
 .header__search {
     background-color: var(--white-color);
     height: 40px;
@@ -656,6 +674,8 @@
 .header__logo-link {
     text-decoration: none;
     color: transparent;
+    display: block;
+    line-height: 0;
 }
 
 .header__logo-img {
@@ -901,6 +921,7 @@
     display: inline-block;
     padding: 0 10px;
     cursor: pointer;
+    -webkit-tap-highligh-color: transparent;
 }
 
 .header__cart-notice {
@@ -1002,7 +1023,7 @@
     list-style: none;
     /* Xử lý số lượng sản phẩm nhiều, 
     vượt quá height trình duyệt*/
-    height: 56vh;
+    max-height: 56vh;
     overflow-y: auto;
 
 }
@@ -1099,6 +1120,59 @@
 
 .header__cart-view:hover {
     background-color: #fc6136;
+}
+
+/* Header sort bar */
+.header__sort-bar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    height: var(--header-sort-bar-height);
+    background-color: var(--white-color);
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    display: none;
+}
+
+.header__sort-item {
+    flex: 1;
+}
+
+.header__sort-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    display: block;
+    height: 100%;
+    line-height: var(--header-sort-bar-height);
+    text-align: center;
+    position: relative;
+}
+
+.header__sort-link::before {
+    content: "";
+    position: absolute;
+
+    /* canh giua chinh no */
+    top: 50%;
+    transform: translateY(-50%);
+    /* ------------------------- */
+
+    left: 0;
+    height: 60%;
+    border-left: 1px solid #e5e5e5;
+}
+
+.header__sort-item--active .header__sort-link {
+    color: #e53707;
+}
+
+.header__sort-item:first-child .header__sort-link::before {
+    display: none;
 }
 
 .back-home-page {
@@ -1198,6 +1272,67 @@
 .category-item__link:hover {
     right: -10px;
     color: #ef3704;
+}
+
+/* Mobile category */
+.mobile-category {
+    display: none;
+}
+
+.mobile-category__list {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    max-width: 100%;
+    /* Khi chiều ngang vượt quá 
+    giới hạn sẽ có thanh cuộn */
+    overflow-x: auto;
+}
+
+.mobile-category__list::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-category__item {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.mobile-category__item:nth-of-type(3n + 1) .mobile-category__link {
+    background-color: #87AFD8;
+}
+
+.mobile-category__item:nth-of-type(3n + 2) .mobile-category__link {
+    background-color: #6dcdcd;
+}
+
+.mobile-category__item:nth-of-type(3n + 3) .mobile-category__link {
+    background-color: #84c180;
+}
+
+.mobile-category__link {
+    --line-height: 2rem;
+    text-decoration: none;
+    color: var(--white-color);
+    font-style: 1.4rem;
+    line-height: var(--line-height);
+    text-align: center;
+    width: 110px;
+    height: calc(var(--line-height) * 2);
+    /* Ẩn chữ khi vượt quá giới hạn */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    /* -----------------------------*/
+    display: block;
+    border-radius: 4px;
+    font-weight: 300;
+    /* Không cho người dùng select tới */
+    user-select: none;
+    -webkit-user-select: none;
+    /* -----------------------------*/
+    padding: 0 6px;
 }
 
 /* Home sort + filter */
@@ -1405,7 +1540,7 @@
 
 .home-product-item__address-text {
     color: #0000008A;
-    font-size: 1.2rem;
+    font-size: 1.14rem;
     margin: 0;
     padding-left: 91px;
     padding-bottom: 9px;
@@ -1487,6 +1622,7 @@
 
 .home-product__pagination {
     margin: 40px 0 44px 0;
+    padding-left: 0;
 }
 
 .white {
@@ -1793,8 +1929,8 @@
     width: 100px;
     height: 48px;
     background-color: #fff;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     box-shadow: 0 1px 3.125px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -1817,4 +1953,5 @@
     display: block;
     margin-top: 8px;
     margin-left: 4px;
+    text-decoration: none;
 }
